@@ -1,5 +1,7 @@
 package br.com.cooperativismo.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import br.com.cooperativismo.service.UsuarioService;
 @RequestMapping("/usuario")
 
 public class Usuario extends BaseController {
+	private static final Logger logger = LoggerFactory.getLogger(Usuario.class);
 	@Autowired
 	UsuarioService usuarioService;
 
@@ -26,8 +29,10 @@ public class Usuario extends BaseController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public ResponseEntity<BaseResponseDTO> cadastrar(@RequestBody CadastroUsuarioDTO cadastro) {
 		try {
+			logger.info("Efetuando cadastro do usuario:" + cadastro.getNome());
 			return ok(usuarioService.cadastro(cadastro));
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return error(e.getMessage());
 		}
 	}
@@ -35,8 +40,10 @@ public class Usuario extends BaseController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public ResponseEntity<BaseResponseDTO> buscaUnica(@PathVariable String cpf) {
 		try {
+			logger.info("Buscando cpf" + cpf);
 			return ok(usuarioService.buscaUnica(cpf));
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return error(e.getMessage());
 		}
 	}
@@ -45,8 +52,10 @@ public class Usuario extends BaseController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public ResponseEntity<BaseResponseDTO> buscar() {
 		try {
+			logger.info("Buscando todos os usuarios");
 			return ok(usuarioService.bucasrTodos());
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			return error(e.getMessage());
 		}
 	}

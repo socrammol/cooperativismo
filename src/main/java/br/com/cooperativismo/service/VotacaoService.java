@@ -1,11 +1,11 @@
 package br.com.cooperativismo.service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,8 @@ import br.com.cooperativismo.repository.VotoRepositoryCustom;
 
 @Service
 public class VotacaoService implements criaVoto {
+
+	private static final Logger logger = LoggerFactory.getLogger(VotacaoService.class);
 	@Autowired
 	PautaRepository pautaRepository;
 	@Autowired
@@ -36,8 +38,10 @@ public class VotacaoService implements criaVoto {
 
 	public Object cadastro(CadastroVotacaoDTO cadastro) {
 		if (cadastro.getNomePauta().isEmpty()) {
+			logger.error("Pauta invalida");
 			throw new IllegalArgumentException(PAUTA_INVALIDA);
 		}
+		logger.info("pauta cadastrada");
 		return cadastroPauta(cadastro);
 	}
 
