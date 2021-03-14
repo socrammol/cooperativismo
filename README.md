@@ -13,6 +13,16 @@ cd "diretorio de sua preferencia"
 git clone https://github.com/socrammol/cooperativismo.git
 ```
 ### Iniciando
+### Antes de fazer o build e necessario indicar onde o arquivo do banco de dados sera criado
+### No arquivo application.properties , indicar o caminho na linha a seguir
+````shell
+spring.datasource.url=jdbc:h2:file:/home/marcos/dbh2teset
+````
+### Caso queiro mudar usuario e sneha tambem pode ser feito atraves da configuração a seguir
+````shell
+spring.datasource.username=sa
+spring.datasource.password=
+````
 ### Construção
 #### Back
 Para construir o projeto Back com o Maven, executar os comando abaixo:
