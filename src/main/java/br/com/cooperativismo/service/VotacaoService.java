@@ -98,12 +98,12 @@ public class VotacaoService implements criaVoto {
 	}
 
 	public Object bucasrTodos() {
-		List<RetornoPautaDTO> retornoPauta = votoRepositoryCustom.buscarTodos();
+		List<RetornoPautaDTO> retornoPauta = votoRepositoryCustom.buscas(null);
 		return retornoPauta;
 	}
 
 	public Object buscaUnica(Long id) {
-		return votoRepositoryCustom.buscarUnica(id);
+		return votoRepositoryCustom.buscas(id);
 	}
 
 }
