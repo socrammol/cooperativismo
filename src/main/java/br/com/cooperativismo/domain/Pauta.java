@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Pauta {
@@ -16,10 +17,22 @@ public class Pauta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
 	@OneToMany
-	private List<Voto> Voto;
+	private List<Voto> voto;
 	private LocalDateTime inicio = LocalDateTime.now();
 	private LocalDateTime fim = LocalDateTime.now().plusMinutes(1);
+	private Boolean aberto = false;
+	private Boolean ativo = true;
+
+	
+	public Boolean getAberto() {
+		return aberto;
+	}
+
+	public void setAberto(Boolean aberto) {
+		this.aberto = aberto;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,11 +51,11 @@ public class Pauta {
 	}
 
 	public List<Voto> getVoto() {
-		return Voto;
+		return voto;
 	}
 
 	public void setVoto(List<Voto> voto) {
-		Voto = voto;
+		voto = voto;
 	}
 
 	public LocalDateTime getInicio() {
@@ -61,9 +74,15 @@ public class Pauta {
 		this.fim = fim;
 	}
 
-	@Override
-	public String toString() {
-		return "Pauta [id=" + id + ", nome=" + nome + ", Voto=" + Voto + ", inicio=" + inicio + ", fim=" + fim + "]";
+	public Boolean getAtivo() {
+		return ativo;
 	}
 
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public void adicionaVoto(Voto voto) {
+		this.voto.add(voto);
+	}
 }

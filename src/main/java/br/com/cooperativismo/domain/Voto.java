@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.com.cooperativismo.enumerator.EnumVoto;
+
 @Entity
 public class Voto {
 
@@ -16,6 +20,7 @@ public class Voto {
 	@OneToOne
 	private Usuario user;
 	private String Voto;
+	@JsonIgnore
 	@ManyToOne
 	private Pauta pauta;
 
@@ -27,13 +32,13 @@ public class Voto {
 		this.id = id;
 	}
 
-//	public Usuario getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(Usuario user) {
-//		this.user = user;
-//	}
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
 
 	public String getVoto() {
 		return Voto;
@@ -50,10 +55,5 @@ public class Voto {
 	public void setPauta(Pauta pauta) {
 		this.pauta = pauta;
 	}
-
-//	@Override
-//	public String toString() {
-//		return "Voto [id=" + id + ", user=" + user + ", Voto=" + Voto + ", pauta=" + pauta + "]";
-//	}
 
 }

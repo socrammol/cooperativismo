@@ -31,9 +31,9 @@ public class Usuario extends BaseController {
 			return error(e.getMessage());
 		}
 	}
-	@GetMapping(path = "/busca/cpf")
+	@GetMapping(path = "/busca/{cpf}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<BaseResponseDTO> buscar(@PathVariable String cpf) {
+	public ResponseEntity<BaseResponseDTO> buscaUnica(@PathVariable String cpf) {
 		try {
 			return ok(usuarioService.buscaUnica(cpf));
 		} catch (Exception e) {
