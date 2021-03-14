@@ -28,7 +28,7 @@ mvn spring-boot:run
 ou pela sua ide de preferencia
 #### Foi gerado um json do postam que se encontra na raiz do projeto
 #### para acessar a documentação
-##### Foi ultilizado o OpenApi 1.3.9 , mas existe uma arquivo de configuração para o swagger puro caso queira futuramente efetuar a troca
+##### Foi ultilizado o OpenApi 1.2.32 , foi feito teste de integração via openapi 
 1. Verssão grafica do swagger [swagger](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config).
 ##### Observaçoes
 1. Primeiro tem que se criar os usuarios
